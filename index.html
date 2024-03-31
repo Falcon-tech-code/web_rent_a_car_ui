@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç Kiralama Uygulaması</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        #app {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .car-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .car-card {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .car-card:hover {
+            transform: scale(1.05);
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Araç Kiralama Uygulaması</h1>
+        <div class="car-list" id="carList"></div>
+        <button onclick="reserveCar()">Araçı Kirala</button>
+    </div>
+
+    <script>
+        const cars = [
+            { id: 1, model: 'Mercedes', price: 200 },
+            { id: 2, model: 'BMW', price: 150 },
+            { id: 3, model: 'Audi', price: 180 },
+            // Diğer araçlar
+        ];
+
+        const carListContainer = document.getElementById('carList');
+
+        function renderCarList() {
+            carListContainer.innerHTML = '';
+            cars.forEach(car => {
+                const carCard = document.createElement('div');
+                carCard.classList.add('car-card');
+                carCard.innerHTML = `
+                    <h3>${car.model}</h3>
+                    <p>Fiyat: ${car.price} TL</p>
+                `;
+                carCard.addEventListener('click', () => selectCar(car));
+                carListContainer.appendChild(carCard);
+            });
+        }
+
+        function selectCar(selectedCar) {
+            alert(`Araç seçildi: ${selectedCar.model}`);
+            // İlgili araç ile ilgili işlemleri gerçekleştirebilirsiniz.
+        }
+
+        function reserveCar() {
+            alert('Araç kiralandı!');
+            // Kiralama işlemleri burada gerçekleştirilebilir.
+        }
+
+        renderCarList();
+    </script>
+</body>
+</html>
